@@ -1,6 +1,8 @@
 # CashFlow-Solver
 
 Try - https://shivxnshjasathi.github.io/CashFlow-Solver/
+algoritm - [CashFlow.pdf](https://github.com/user-attachments/files/16740276/9.Splitwise.Cashflow.Maxmizing.pdf)
+
 
 # Overview
 
