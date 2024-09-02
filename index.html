@@ -14,127 +14,206 @@
     <script src="heap.js"></script>
     <script src="script.js" type="module"></script>
     <style>
+        /* Basic Styling */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f3f4f6, #eef2f7);
+            color: #333;
             margin: 0;
             padding: 0;
-            color: #333;
         }
 
-        .navbar {
-            font-size: 1.2rem;
-            font-weight: bold;
-            background-color: #333;
+        nav.navbar {
+            background: linear-gradient(45deg, #4A90E2, #67A4EA);
             color: #fff;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
             text-align: center;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-bottom: 2px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Main Container */
         #container {
-            width: 90%;
-            max-width: 1200px;
-            height: 70vh;
-            background: #fff;
             display: flex;
-            margin: 40px auto;
-            padding: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #ddd;
+            justify-content: space-between;
+            margin: 2rem auto;
+            max-width: 1200px;
         }
 
         #mynetwork, #mynetwork2 {
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        #mynetwork {
-            width: 50%;
-            height: 100%;
-            border-right: 1px solid #ddd;
-        }
-
-        #container2 {
             width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            height: 400px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 2px solid #4A90E2;
         }
 
         #temptext {
-            width: 100%;
             text-align: center;
-            font-size: 1.5rem;
-            color: #666;
-            padding: 20px;
-            font-weight: 700;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #888;
         }
 
-        #generate-graph, #solve {
-            margin-top: 20px;
-            display: block;
-            width: 80%;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 15px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 25px;
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #4A90E2;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #4A90E2;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4A90E2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+        }
+
+        .btn {
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #4A90E2, #67A4EA);
             border: none;
-            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #3c78c0, #5f8bd7);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: #7F8C8D;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6d7677;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #2ECC71, #33D178);
+            border: none;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(45deg, #28b864, #30c870);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-dark {
+            background-color: #2C3E50;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background-color: #253944;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        /* Transitions and responsiveness */
+        input,
+        button {
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        #generate-graph {
-            background-color: #444;
-            color: #fff;
-        }
-
-        #solve {
-            background-color: #555;
-            color: #fff;
-        }
-
-        #generate-graph:hover, #solve:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            #container {
-                flex-direction: column;
-                height: auto;
-                padding: 10px;
+        /* Mobile-first styling */
+        @media screen and (max-width: 768px) {
+            nav.navbar {
+                font-size: 1.2rem;
             }
 
-            #mynetwork, #mynetwork2 {
-                width: 100%;
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            #container {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+
+            #mynetwork,
+            #mynetwork2 {
                 height: 300px;
             }
 
-            #generate-graph, #solve {
-                width: 90%;
-                font-size: 0.9rem;
+            .btn {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
             }
         }
+
+        /* Desktop-specific media queries */
+        @media screen and (min-width: 769px) {
+            #container {
+                justify-content: space-between;
+                display: flex;
+            }
+
+            #mynetwork,
+            #mynetwork2 {
+                width: 45%;
+            }
+        }
+
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        CashFlow Solver
-    </nav>
+    <nav class="navbar">CashFlow Solver</nav>
 
     <div id="container">
         <div id="mynetwork"></div>
@@ -144,10 +223,29 @@
         </div>
     </div>
 
-    <div>
-        <button type="button" class="btn" id="generate-graph">Get New Problem</button>
-        <button type="button" class="btn" id="solve">Solve</button>
+    <!-- Custom Problem Input Form -->
+    <div class="container">
+        <h3>Enter Custom Problem</h3>
+        <form id="customProblemForm">
+            <div id="peopleInput">
+                <div class="form-group">
+                    <label for="numPeople">Number of People:</label>
+                    <input type="number" class="form-control" id="numPeople" placeholder="Enter number of people" min="2">
+                </div>
+                <button type="button" id="addPerson" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Person</button>
+            </div>
+            <div id="cashFlowInput" class="form-group">
+                <label for="cashFlow">Cash Flow (Person X pays Person Y):</label>
+                <input type="number" id="fromPerson" placeholder="From Person" class="form-control mb-2">
+                <input type="number" id="toPerson" placeholder="To Person" class="form-control mb-2">
+                <input type="number" id="amount" placeholder="Amount" class="form-control mb-2">
+                <button type="button" id="addCashFlow" class="btn btn-secondary"><i class="fas fa-coins"></i> Add Cash Flow</button>
+            </div>
+            <button type="button" id="generate-graph" class="btn btn-success"><i class="fas fa-chart-line"></i> Generate Custom Graph</button>
+            <button type="button" id="solve" class="btn btn-dark"><i class="fas fa-calculator"></i> Solve</button>
+        </form>
     </div>
+
 </body>
 
 </html>
